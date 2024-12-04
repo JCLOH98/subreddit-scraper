@@ -1,0 +1,12 @@
+
+
+table {
+    width: 100%;
+    table-layout: fixed; /* Forces a fixed layout for the table */
+}
+
+ #result {
+    width: 100%;
+    text-wrap: pretty;
+    word-break: break-all;
+ }

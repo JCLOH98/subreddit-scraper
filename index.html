@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/shoelace-autoloader.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Subreddit scraper</title>
+</head>
+<body>
+    <sl-input pill id="subreddit-name" name="subreddit-name" label="subreddit name" value="TelegramBots" clearable onkeydown="inputEnter(event)"></sl-input>
+    <sl-select pill id="get-by" label="get by" value="new">
+        <sl-option value="best">Best</sl-option>
+        <sl-option value="hot">Hot</sl-option>
+        <sl-option value="new">New</sl-option>
+        <sl-option value="top">Top</sl-option>
+        <sl-option value="rising">Rising</sl-option>
+    </sl-select>
+    <sl-input pill id="limit" label="limit" value=1 type="number"></sl-input>
+    <sl-button pill onclick="inputButton()">Scrape</sl-button>
+    <sl-button pill >Save</sl-button>
+    <div id="result">
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
