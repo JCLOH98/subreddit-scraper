@@ -1,12 +1,73 @@
 
 
-table {
-    width: 100%;
-    table-layout: fixed; /* Forces a fixed layout for the table */
+body {
+    font-family: "Quicksand", sans-serif;
+    overflow-y: scroll;
 }
 
- #result {
+h1 {
+    text-transform: uppercase;
+}
+
+table {
     width: 100%;
-    text-wrap: pretty;
-    word-break: break-all;
- }
+    border: solid 2px var(--sl-color-neutral-1000);
+    border-radius: 0.5rem;
+    border-spacing: 0;
+}
+
+tr:not(:last-child) th, tr:not(:last-child) td{
+    border-bottom: solid 2px var(--sl-color-neutral-1000);
+}
+
+td {
+    padding: 0.5rem;
+}
+
+/* title, post, author, flair, url, time */
+.title-cell, .author-cell, .time-cell, .url-cell {
+    width: 10vw;
+}
+
+.flair-cell {
+    width: 10vw;
+}
+
+.post-cell {
+    width: 40vw;
+}
+
+sl-input, sl-select {
+    margin: 1rem 2rem;
+}
+
+sl-button {
+    margin: 0.5rem;
+}
+
+#flairs {
+    margin: 0.5rem;
+}
+
+#result {
+    width: 100%;
+    word-break: break-word;
+}
+
+#subtitle {
+    font-size: medium;
+}
+
+#subtitle a{
+    text-decoration: none;
+    color: var(--sl-color-neutral-1000);
+}
+
+#subtitle a:hover{
+    text-shadow: 1px 1px 5px var(--sl-color-neutral-800);
+}
+
+h1, #preset-names, #action-buttons {
+    width: 100%;
+    text-align: center;
+}

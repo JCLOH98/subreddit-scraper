@@ -7,10 +7,35 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/shoelace-autoloader.js"></script>
     <link rel="stylesheet" href="styles.css">
 
+    <link
+    rel="stylesheet"
+    media="(prefers-color-scheme:light)"
+    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/themes/light.css"
+    />
+    <link
+    rel="stylesheet"
+    media="(prefers-color-scheme:dark)"
+    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/themes/dark.css"
+    onload="document.documentElement.classList.add('sl-theme-dark');"
+    />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
     <title>Subreddit scraper</title>
 </head>
 <body>
-    <sl-input pill id="subreddit-name" name="subreddit-name" label="subreddit name" value="TelegramBots" clearable onkeydown="inputEnter(event)"></sl-input>
+    <h1>Subreddit scraper <span id="subtitle">by <a rel="noopener" target="_blank" href="https://jcloh-98.web.app/">JCLOH98</a></span></h1>
+    
+    <sl-input pill id="subreddit-name" name="subreddit-name" label="subreddit name" value="software" clearable onkeydown="inputEnter(event)"></sl-input>
+    <div id="preset-names">
+        <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">software</sl-button>
+        <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">Discord_Bots</sl-button>
+        <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">TelegramBots</sl-button>
+        <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">webscraping</sl-button>
+    </div>
     <sl-select pill id="get-by" label="get by" value="new">
         <sl-option value="best">Best</sl-option>
         <sl-option value="hot">Hot</sl-option>
@@ -18,12 +43,17 @@
         <sl-option value="top">Top</sl-option>
         <sl-option value="rising">Rising</sl-option>
     </sl-select>
-    <sl-input pill id="limit" label="limit" value=1 type="number"></sl-input>
-    <sl-button pill onclick="inputButton()">Scrape</sl-button>
-    <sl-button pill >Save</sl-button>
-    <div id="result">
+    <sl-input pill id="limit" label="limit" value=5 type="number"></sl-input>
+    
+    <div id="action-buttons">
+        <sl-button variant="neutral" pill onclick="inputButton()">Scrape</sl-button>
+        <sl-button variant="neutral" pill onclick="saveTable()">Save</sl-button>
     </div>
 
+    <div id="flairs"></div>
+    <div id="result"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
