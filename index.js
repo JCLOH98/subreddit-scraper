@@ -2,6 +2,7 @@
 const result = document.getElementById("result");
 const flairs = document.getElementById("flairs");
 const subreddit_name = document.getElementById("subreddit-name");
+let selected_flairs = []
 
 for (let preset_subreddit_name of document.getElementsByClassName("preset-subreddit-name")) {
     preset_subreddit_name.addEventListener("click",()=>{
@@ -26,7 +27,7 @@ const inputButton = ()=>{
 }
 
 const scrape = (subreddit_name) => {
-
+    selected_flairs = []
     let url = "";
     // get the data
     const getBy = document.getElementById("get-by").value;
@@ -90,9 +91,13 @@ const formatPost = (response) => {
         title_data.classList.add("title-cell");
         tr_data.appendChild(title_data);
 
+        // format markdown to HTML
         let post = data["selftext"];
         let post_data = document.createElement("td");
-        post_data.innerText = post;
+        let post_div = document.createElement("div");
+        post_div.innerHTML = marked.parse(post);
+        post_div.classList.add("post-cell");
+        post_data.appendChild(post_div);
         post_data.classList.add("post-cell");
         tr_data.appendChild(post_data);
 
@@ -153,7 +158,6 @@ const formatPost = (response) => {
     }
 }
 
-let selected_flairs = []
 const toggleTable = () => {
     // find flairs by class 'flair-cell' 
     const post_flairs = document.getElementsByClassName("flair-cell");
@@ -161,8 +165,13 @@ const toggleTable = () => {
         if (selected_flairs.length) { //when there is some flair selected
             if (post_flair.innerText == "") { //empty flair
                 if(selected_flairs.includes("--empty--")) {
+                    console.log("here")
                     post_flair.parentElement.style.display = "";
                     post_flair.parentElement.style.visibility = "visible";
+                }
+                else {
+                    post_flair.parentElement.style.display = "none";
+                    post_flair.parentElement.style.visibility = "hidden";
                 }
             }
             else if (selected_flairs.includes(post_flair.innerText)) {
@@ -194,9 +203,15 @@ const flairSelected = (flair_button) => {
     else {
         flair_button.setAttribute("variant","neutral"); //unfilter
         if (selected_flairs.includes(flair_text)) {
-            selected_flairs.pop(flair_text);
+
+            var index = selected_flairs.indexOf(flair_text);
+            if (index !== -1) {
+                selected_flairs.splice(index, 1);
+            }
         }
     }
+    // console.log("flair_text",flair_text)
+    // console.log("selected_flairs",selected_flairs)
 
     toggleTable();
 }
