@@ -32,11 +32,20 @@
     <sl-input pill id="subreddit-name" name="subreddit-name" label="subreddit name" value="software" clearable onkeydown="inputEnter(event)"></sl-input>
     <div id="preset-names">
         <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">software</sl-button>
+        <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">CodingHelp</sl-button>
         <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">SideProject</sl-button>
         <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">Discord_Bots</sl-button>
         <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">TelegramBots</sl-button>
         <sl-button size="small" pill variant="neutral" class="preset-subreddit-name">webscraping</sl-button>
     </div>
+    <div>
+        <div id="search-term-div">
+            <input title="Use search term" id="use-search-term" type="checkbox">
+            <div id="search-term-label">search term</div>
+        </div>
+        <sl-input pill id="search-term"></sl-input>
+    </div>
+
     <sl-select pill id="get-by" label="get by" value="new">
         <sl-option value="best">Best</sl-option>
         <sl-option value="hot">Hot</sl-option>

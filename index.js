@@ -32,10 +32,16 @@ const scrape = (subreddit_name) => {
     // get the data
     const getBy = document.getElementById("get-by").value;
     const limit = document.getElementById("limit").value;
+    const search_term = document.getElementById("search-term").value;
 
-    // form urul
+    // form url
     // result.innerText = `'${subreddit_name}' get by '${getBy}' limit '${limit}'`
     url = `https://www.reddit.com/r/${subreddit_name}/${getBy}.json?limit=${limit}`;
+    
+    if (document.getElementById("use-search-term").checked) {
+        url = `https://www.reddit.com/r/${subreddit_name}/search.json?q=${encodeURIComponent(search_term)}&limit=${limit}&sort=${getBy}`;
+    }
+    console.log(url)
 
 
     // get the result

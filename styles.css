@@ -1,7 +1,10 @@
 
 
 body {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     overflow-y: scroll;
 }
 
@@ -10,7 +13,7 @@ h1 {
 }
 
 table {
-    width: 100%;
+    margin: 0.5rem;
     border: solid 2px var(--sl-color-neutral-1000);
     border-radius: 0.5rem;
     border-spacing: 0;
@@ -37,12 +40,24 @@ td {
     width: 40vw;
 }
 
-sl-input, sl-select {
+sl-input, sl-select, #search-term-div {
     margin: 1rem 2rem;
 }
 
+#search-term-div {
+    display:flex;
+}
+
+
 sl-button {
     margin: 0.5rem;
+}
+
+#use-search-term {
+    justify-self: center;
+    vertical-align: center;
+    align-self: center;
+    height: 100%;
 }
 
 #flairs {
