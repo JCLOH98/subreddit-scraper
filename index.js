@@ -39,9 +39,9 @@ const scrape = (subreddit_name) => {
     url = `https://www.reddit.com/r/${subreddit_name}/${getBy}.json?limit=${limit}`;
     
     if (document.getElementById("use-search-term").checked) {
-        url = `https://www.reddit.com/r/${subreddit_name}/search.json?q=${encodeURIComponent(search_term)}&limit=${limit}&sort=${getBy}`;
+        url = `https://www.reddit.com/r/${subreddit_name}/search.json?q=${encodeURIComponent(search_term)}&limit=${limit}&sort=${getBy}&&restrict_sr=on`;
     }
-    console.log(url)
+    //console.log(url)
 
 
     // get the result
