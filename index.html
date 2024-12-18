@@ -43,7 +43,7 @@
             <input title="Use search term" id="use-search-term" type="checkbox">
             <div id="search-term-label">search term</div>
         </div>
-        <sl-input pill id="search-term"></sl-input>
+        <sl-input pill id="search-term" clearable onkeydown="searchTermEnter(event)"></sl-input>
     </div>
 
     <sl-select pill id="get-by" label="get by" value="new">
@@ -53,7 +53,7 @@
         <sl-option value="top">Top</sl-option>
         <sl-option value="rising">Rising</sl-option>
     </sl-select>
-    <sl-input pill id="limit" label="limit" value=5 type="number"></sl-input>
+    <sl-input pill id="limit" label="limit" value=5 type="number" clearable onkeydown="inputEnter(event)"></sl-input>
     
     <div id="action-buttons">
         <sl-button variant="neutral" pill onclick="inputButton()">Scrape</sl-button>

@@ -17,6 +17,12 @@ const inputEnter = (event) => {
     }
 }
 
+const searchTermEnter = (event) => {
+    if (document.getElementById("use-search-term").checked && event.key === 'Enter') {
+        inputButton()
+    }
+}
+
 const inputButton = ()=>{
     if (subreddit_name.value==""){
         result.innerText = "Please enter the subreddit name!";
@@ -32,16 +38,15 @@ const scrape = (subreddit_name) => {
     // get the data
     const getBy = document.getElementById("get-by").value;
     const limit = document.getElementById("limit").value;
-    const search_term = document.getElementById("search-term").value;
+    let search_term = document.getElementById("search-term").value;
 
     // form url
     // result.innerText = `'${subreddit_name}' get by '${getBy}' limit '${limit}'`
     url = `https://www.reddit.com/r/${subreddit_name}/${getBy}.json?limit=${limit}`;
-    
-    if (document.getElementById("use-search-term").checked) {
+    if (search_term.trim()!== "" && document.getElementById("use-search-term").checked) {
         url = `https://www.reddit.com/r/${subreddit_name}/search.json?q=${encodeURIComponent(search_term)}&limit=${limit}&sort=${getBy}&&restrict_sr=on`;
     }
-    //console.log(url)
+    console.log(url)
 
 
     // get the result
@@ -80,10 +85,34 @@ const formatPost = (response) => {
     const table = document.createElement("table");
     const headings = ["title","post","author","flair","link","time"]
     const tr_heading = document.createElement("tr");
-    for (let h of headings) {
+    tr_heading.classList.add("table-headings")
+    for (let [index, h] of headings.entries()) {
         const h_elem = document.createElement("th");
-        h_elem.innerText = h
-        tr_heading.appendChild(h_elem)
+        h_elem.innerText = h;
+        h_elem.classList.add("table-heading");
+        tr_heading.appendChild(h_elem);
+        // switch (index) {
+        //     case 1:
+        //         h_elem.classList.add("title-cell");
+        //         break;
+        //     case 1:
+        //         h_elem.classList.add("post-cell");
+        //         break;
+        //     case 2:
+        //         h_elem.classList.add("author-cell");
+        //         break;
+        //     case 3:
+        //         h_elem.classList.add("flair-cell");
+        //         break;
+        //     case 4:
+        //         h_elem.classList.add("link-cell");
+        //         break;
+        //     case 5:
+        //         h_elem.classList.add("time-cell");
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
     
     table.appendChild(tr_heading)
@@ -91,6 +120,7 @@ const formatPost = (response) => {
     for (let data of response) {
         data = data["data"]
         const tr_data = document.createElement("tr");
+        tr_data.classList.add("post-row");
         let title = data["title"];
         let title_data = document.createElement("td");
         title_data.innerText = title;
@@ -102,7 +132,6 @@ const formatPost = (response) => {
         let post_data = document.createElement("td");
         let post_div = document.createElement("div");
         post_div.innerHTML = marked.parse(post);
-        post_div.classList.add("post-cell");
         post_data.appendChild(post_div);
         post_data.classList.add("post-cell");
         tr_data.appendChild(post_data);

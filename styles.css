@@ -12,36 +12,79 @@ h1 {
     text-transform: uppercase;
 }
 
-table {
-    margin: 0.5rem;
-    border: solid 2px var(--sl-color-neutral-1000);
-    border-radius: 0.5rem;
-    border-spacing: 0;
+
+@media all and (max-width: 699px) {
+    .post-row {
+        display: flex;
+        flex-direction: column;
+        border: solid 1px;
+        border-radius: 0.5rem; 
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .table-headings {
+        display: none;
+        visibility: hidden;
+    }
+
+    .title-cell {
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .post-cell {
+        width: 100%;
+    }
+    
+    .author-cell, .time-cell, .url-cell, .flair-cell {
+        text-align: center;
+        font-size:small;
+    }
 }
 
-tr:not(:last-child) th, tr:not(:last-child) td{
-    border-bottom: solid 2px var(--sl-color-neutral-1000);
+@media all and (min-width: 700px) {
+    table {
+        margin: 0.5rem auto;
+        border: solid 2px;
+        border-radius: 0.5rem;
+        border-spacing: 0;
+    }
+    
+    tr:not(:last-child) th, tr:not(:last-child) td{
+        border-bottom: solid 2px;
+    }
+    
+    td {
+        padding: 0.5rem;
+    }
+    
+    .title-cell {
+        width: 18%;
+    }
+
+    .author-cell, .time-cell, .url-cell, .flair-cell {
+        width: 8%;
+        font-size:small;
+    }
+    
+    .post-cell {
+        width: 50%;
+    }
 }
 
-td {
-    padding: 0.5rem;
+.table-heading {
+    font-size: small;
+    padding: 0.5rem 0;
 }
 
-/* title, post, author, flair, url, time */
-.title-cell, .author-cell, .time-cell, .url-cell {
-    width: 10vw;
-}
 
-.flair-cell {
-    width: 10vw;
-}
-
-.post-cell {
-    width: 40vw;
-}
 
 sl-input, sl-select, #search-term-div {
-    margin: 1rem 2rem;
+    width: 500px;
+    max-width: 90%;
+    margin: 1rem auto;
 }
 
 #search-term-div {
@@ -60,12 +103,10 @@ sl-button {
     height: 100%;
 }
 
-#flairs {
-    margin: 0.5rem;
-}
-
 #result {
-    width: 100%;
+    width: 1280px;
+    max-width: 100%;
+    margin: 1rem auto;
     word-break: break-word;
 }
 
@@ -82,7 +123,8 @@ sl-button {
     text-shadow: 1px 1px 5px var(--sl-color-neutral-800);
 }
 
-h1, #preset-names, #action-buttons {
-    width: 100%;
+h1, #preset-names, #action-buttons, #flairs {
+    max-width: 90%;
+    margin: auto;
     text-align: center;
 }
