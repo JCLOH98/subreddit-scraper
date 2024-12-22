@@ -12,6 +12,11 @@ h1 {
     text-transform: uppercase;
 }
 
+pre {
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+}
+
 
 @media all and (max-width: 699px) {
     .post-row {
