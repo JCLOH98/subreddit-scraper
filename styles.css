@@ -133,3 +133,16 @@ h1, #preset-names, #action-buttons, #flairs {
     margin: auto;
     text-align: center;
 }
+
+#support-this-project {
+    background-color: var( --sl-input-background-color);
+    color: var( --sl-input-color);
+    border: solid 1px var( --sl-input-color);
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    position: fixed;
+    font-size: small;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    text-decoration: none;
+}
